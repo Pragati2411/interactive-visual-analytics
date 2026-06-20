@@ -1,26 +1,23 @@
-# 🚀 SpaceX Falcon 9 — Interactive Visual Analytics
+# 🚀 SpaceX Falcon 9 — Launch Site Proximity Analysis with Folium
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
 ![Folium](https://img.shields.io/badge/Folium-Geospatial%20Maps-green)
-![Plotly Dash](https://img.shields.io/badge/Plotly%20Dash-Interactive%20Dashboard-purple?logo=plotly)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
 ---
 
 ## 📌 Project Overview
 
-This project builds **interactive visualisations** of the SpaceX Falcon 9 launch dataset using **Folium** for geospatial mapping and **Plotly Dash** for a web-based interactive dashboard. The goal is to let users explore launch sites, proximity factors, and success patterns visually and interactively, rather than through static charts alone.
-
-> Note: this README is based on the standard IBM Data Science Capstone curriculum for this notebook. If your specific notebook covers slightly different content, feel free to adjust the sections below to match exactly what you built.
+This project uses **Folium** to build an interactive map of SpaceX Falcon 9 launch sites, exploring how launch outcomes and site location relate to nearby coastlines, cities, railways, and highways.
 
 ---
 
 ## 🎯 Objectives
 
 - Mark all SpaceX launch sites on an interactive map using Folium
-- Use colour-coded markers/clusters to distinguish successful vs failed landings at each site
-- Calculate and visualise distances from launch sites to nearby coastlines, highways, railways, and cities
-- Build an interactive Plotly Dash dashboard to filter and explore launch outcomes by site, payload, and year
+- Use colour-coded marker clusters to distinguish successful vs. failed landings at each site
+- Add a live mouse-position tool to read map coordinates while exploring
+- Calculate and visualise distances from each launch site to its nearest coastline, city, railway, and highway
 
 ---
 
@@ -31,24 +28,24 @@ This project builds **interactive visualisations** of the SpaceX Falcon 9 launch
 | Python | Core programming language |
 | Pandas | Data loading and manipulation |
 | Folium | Interactive geospatial mapping |
-| Plotly Dash | Web-based interactive dashboard |
 | Jupyter Notebook | Interactive analysis environment |
 
 ---
 
-## 🔍 Key Features
+## 🔍 Key Features & Findings
 
-### 🗺️ Folium Interactive Map
-- All Falcon 9 launch sites plotted on a world map with circle markers and site labels
-- Marker clusters used to show launch outcomes (success/failure) at each site with color-coded icons
-- `MousePosition` plugin added to display real-time coordinates while exploring the map
-- Distance lines drawn from launch sites to the nearest coastline, city, railway, and highway to analyse site selection criteria (e.g., safety distance from populated areas)
+### 🗺️ Launch Site Map
+- Plotted all 4 Falcon 9 launch sites (CCAFS LC-40, CCAFS SLC-40, KSC LC-39A, VAFB SLC-4E) with circle markers and text labels
 
-### 📊 Plotly Dash Dashboard
-- Dropdown menu to filter launches by site (or view all sites)
-- Pie chart showing the proportion of successful vs failed launches for the selected site
-- Range slider to filter by payload mass
-- Scatter plot showing the relationship between payload mass and launch success, colour-coded by booster version
+### 🟢🔴 Success/Failure Marker Clusters
+- Added every individual launch record to the map using `MarkerCluster`, color-coded green for success and red for failure, making it easy to visually compare site performance
+
+### 📍 Live Coordinate Tool
+- Added the `MousePosition` plugin so coordinates can be read directly off the map while exploring
+
+### 📏 Proximity Analysis
+- Calculated real distances (Haversine formula) from launch sites to the nearest coastline, city, railway, and highway, and drew connecting lines on the map
+- **Findings:** launch sites are **not** in close proximity to railways or highways, but **are** in close proximity to the coastline — consistent with safety-distance siting away from populated areas
 
 ---
 
@@ -56,7 +53,7 @@ This project builds **interactive visualisations** of the SpaceX Falcon 9 launch
 
 ```
 spacex-interactive-analytics/
-├── Interactive Visual Analytics.ipynb   # Folium maps & Plotly Dash dashboard
+├── Interactive Visual Analytics.ipynb   # Folium launch site & proximity analysis
 └── README.md                             # Project documentation (this file)
 ```
 
@@ -72,7 +69,7 @@ spacex-interactive-analytics/
 
 2. **Install dependencies**
    ```bash
-   pip install pandas folium plotly dash jupyter
+   pip install pandas folium wget jupyter
    ```
 
 3. **Launch Jupyter Notebook**
@@ -84,7 +81,13 @@ spacex-interactive-analytics/
 
 ## 💡 Insights Summary
 
-> Interactive mapping reveals that SpaceX launch sites are deliberately positioned at a safe distance from major cities and railways, while remaining close to coastlines to support safe abort and recovery operations. The Plotly Dash dashboard makes it easy to interactively compare success rates and payload patterns across different launch sites without needing to re-run code for each view.
+> Mapping SpaceX's launch sites shows a clear siting pattern: all four sites sit close to a coastline (useful for safe abort and recovery operations) while staying well away from railways and highways. Color-coded marker clusters make it easy to compare success rates across sites at a glance, without reading raw tables.
+
+---
+
+## 🔮 Possible Next Step
+
+A Plotly Dash dashboard (filterable by site/payload, with success-rate pie charts) would be a natural extension of this analysis — not yet built.
 
 ---
 
@@ -100,7 +103,9 @@ spacex-interactive-analytics/
 ---
 
 ## 👩‍💻 Author
-
 **Pragati Mistry** — Data Analyst | MSc Mathematics | IBM Data Science Professional Certificate  
 📍 Surat, India | Open to Remote & Relocating to Mumbai / Hyderabad / Bangalore  
+🔗 [GitHub Profile](https://github.com/Pragati2411)
+**Pragati** — Data Analyst | MSc Mathematics | IBM Data Science Professional Certificate
+📍 Surat, India | Open to Remote & Relocating to Mumbai / Hyderabad / Bangalore
 🔗 [GitHub Profile](https://github.com/Pragati2411)
